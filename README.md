@@ -34,8 +34,8 @@ Endpoints
   Description : Récupère la liste des genres de films.
 
 Sources :
-https://docs.nestjs.com/techniques/http-module
-https://docs.nestjs.com/techniques/configuration
-https://docs.nestjs.com/openapi/decorators
+- https://docs.nestjs.com/techniques/http-module
+- https://docs.nestjs.com/techniques/configuration
+- https://docs.nestjs.com/openapi/decorators
 
 
