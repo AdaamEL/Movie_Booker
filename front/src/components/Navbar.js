@@ -12,6 +12,7 @@ const Navbar = () => {
           <>
             <li><Link to="/login">Connexion</Link></li>
             <li><Link to="/register">Inscription</Link></li>
+            <li><Link to="/movies">Liste des Films</Link></li>
           </>
         ) : (
           <>

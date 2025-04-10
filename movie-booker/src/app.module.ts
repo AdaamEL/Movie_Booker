@@ -7,7 +7,6 @@ import { UserModule } from './user/user.module';
 import { MoviesModule } from './movies/movies.module';
 import { ReservationModule } from './reservation/reservation.module';
 
-// 👇 ajoute ces deux imports
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
