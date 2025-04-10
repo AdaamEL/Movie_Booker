@@ -1,22 +1,36 @@
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+import { Injectable, CanActivate, ExecutionContext, Logger } from '@nestjs/common';
 import * as jwt from 'jsonwebtoken';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
+  private readonly logger = new Logger(JwtAuthGuard.name);
+
+  constructor(private configService: ConfigService) {}
+
   canActivate(context: ExecutionContext): boolean {
     const request = context.switchToHttp().getRequest();
     const token = request.headers['authorization']?.split(' ')[1];
 
     if (!token) {
+      this.logger.error('No token provided');
+      return false;
+    }
+
+    const secretKey = this.configService.get<string>('JWT_SECRET');
+
+    if (!secretKey) {
+      this.logger.error('JWT secret key is not defined');
       return false;
     }
 
     try {
-      const secretKey = 'Ib9oLHvjNyCUI5ySlwkEWs08NUwQgqs5430svG9/s'; 
       const decoded = jwt.verify(token, secretKey);
-      request.user = decoded; 
+      this.logger.log('Token verified:', decoded);
+      request.user = decoded;
       return true;
-    } catch {
+    } catch (error) {
+      this.logger.error('Token verification failed', error);
       return false;
     }
   }
