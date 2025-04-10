@@ -37,7 +37,7 @@ export class UserService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const token = jwt.sign({ email }, 'secretKey', { expiresIn: '1h' });
+    const token = jwt.sign({ email }, 'Ib9oLHvjNyCUI5ySlwkEWs08NUwQgqs5430svG9/', { expiresIn: '1h' });
     return { token };
   }
 }

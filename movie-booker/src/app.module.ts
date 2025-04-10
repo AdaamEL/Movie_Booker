@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
 import { UserModule } from './user/user.module';
 import { MoviesModule } from './movies/movies.module';
+import { ReservationModule } from './reservation/reservation.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { MoviesModule } from './movies/movies.module';
     UserModule,
     HttpModule,
     MoviesModule,
+    ReservationModule,
   ],
 })
 export class AppModule {}
