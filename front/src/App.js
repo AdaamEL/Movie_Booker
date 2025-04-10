@@ -12,8 +12,8 @@ import './App.css';
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <Navbar />
         <div className="container">
           <Routes>
@@ -24,8 +24,8 @@ function App() {
             <Route path="/movies" element={<MovieList />} />
           </Routes>
         </div>
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 

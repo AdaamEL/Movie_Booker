@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { register } from '../../services/api';
 import { useAuth } from '../../AuthContext';
 
 const Register = () => {
   const [userData, setUserData] = useState({ email: '', password: '', name: '' });
   const { login: authLogin } = useAuth();
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,7 +16,6 @@ const Register = () => {
     try {
       const user = await register(userData);
       authLogin(user.token);
-      navigate('/movies'); // Rediriger vers la liste des films après l'inscription
     } catch (error) {
       console.error('Erreur d\'inscription:', error);
     }

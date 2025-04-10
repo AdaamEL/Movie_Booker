@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { login } from '../../services/api';
 import { useAuth } from '../../AuthContext';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const { login: authLogin } = useAuth();
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,7 +16,6 @@ const Login = () => {
     try {
       const user = await login(credentials);
       authLogin(user.token);
-      navigate('/movies'); // Rediriger vers la liste des films après la connexion
     } catch (error) {
       console.error('Erreur de connexion:', error);
     }
